@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F43646EF18F5A3A60001FC40 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43646EE18F5A3A60001FC40 /* CoreFoundation.framework */; };
-		F43646F218F5A3A60001FC40 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = F43646F118F5A3A60001FC40 /* main.c */; };
-		F43646F418F5A3A60001FC40 /* Glowish.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F43646F318F5A3A60001FC40 /* Glowish.1 */; };
+		F43646FB18F5A3E00001FC40 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43646FA18F5A3E00001FC40 /* Cocoa.framework */; };
+		F43646FF18F5A3F30001FC40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F43646FC18F5A3F30001FC40 /* main.m */; };
+		F436470018F5A3F30001FC40 /* NSImage+Glowish.m in Sources */ = {isa = PBXBuildFile; fileRef = F43646FE18F5A3F30001FC40 /* NSImage+Glowish.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -19,7 +20,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				F43646F418F5A3A60001FC40 /* Glowish.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -28,8 +28,10 @@
 /* Begin PBXFileReference section */
 		F43646EB18F5A3A60001FC40 /* Glowish */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Glowish; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43646EE18F5A3A60001FC40 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		F43646F118F5A3A60001FC40 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		F43646F318F5A3A60001FC40 /* Glowish.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Glowish.1; sourceTree = "<group>"; };
+		F43646FA18F5A3E00001FC40 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F43646FC18F5A3F30001FC40 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F43646FD18F5A3F30001FC40 /* NSImage+Glowish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Glowish.h"; sourceTree = "<group>"; };
+		F43646FE18F5A3F30001FC40 /* NSImage+Glowish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Glowish.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F43646FB18F5A3E00001FC40 /* Cocoa.framework in Frameworks */,
 				F43646EF18F5A3A60001FC40 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +67,7 @@
 		F43646ED18F5A3A60001FC40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F43646FA18F5A3E00001FC40 /* Cocoa.framework */,
 				F43646EE18F5A3A60001FC40 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
@@ -72,8 +76,9 @@
 		F43646F018F5A3A60001FC40 /* Glowish */ = {
 			isa = PBXGroup;
 			children = (
-				F43646F118F5A3A60001FC40 /* main.c */,
-				F43646F318F5A3A60001FC40 /* Glowish.1 */,
+				F43646FC18F5A3F30001FC40 /* main.m */,
+				F43646FD18F5A3F30001FC40 /* NSImage+Glowish.h */,
+				F43646FE18F5A3F30001FC40 /* NSImage+Glowish.m */,
 			);
 			path = Glowish;
 			sourceTree = "<group>";
@@ -129,7 +134,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F43646F218F5A3A60001FC40 /* main.c in Sources */,
+				F436470018F5A3F30001FC40 /* NSImage+Glowish.m in Sources */,
+				F43646FF18F5A3F30001FC40 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
