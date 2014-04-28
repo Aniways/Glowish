@@ -42,9 +42,14 @@ int main(int argc, const char *argv[])
         NSImage *glowish = [image glowishImage];
         glowish = [glowish imageResizedTo:image.size];
         
-        NSString *targetFilename = [NSString stringWithFormat:@"g.%@", fileName];
-        NSString *targetPath = [NSString pathWithComponents:@[ rootPath, targetFilename] ];
-        
+        NSString *targetFilename = [NSString stringWithFormat:@"%@", fileName];
+
+        NSString *targetFolderPath = [NSString pathWithComponents:@[ rootPath, @"outline"]];
+        NSFileManager *fileManager= [NSFileManager defaultManager];
+        [fileManager createDirectoryAtPath:targetFolderPath withIntermediateDirectories:YES attributes:nil error:NULL];
+
+        NSString *targetPath = [NSString pathWithComponents:@[ targetFolderPath, targetFilename] ];
+
         [glowish writePNGToFile:targetPath outputSizeInPixels:glowish.size error:nil];
         NSLog(@"%@ => %@", fileName, targetFilename);
         count++;
