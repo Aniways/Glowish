@@ -45,8 +45,22 @@ void recursiveGlowish(NSString *rootPath, NSFileManager *fm)
                 NSString *targetPath = fullPath;
                 
                 [glowish writePNGToFile:targetPath outputSizeInPixels:glowish.size error:nil];
-                NSLog(@"converting %@", fileName);
+                //NSLog(@"converting %@", fileName);
                 count++;
+                
+                //validate size
+                int maxSize = [[[[[[[fileName componentsSeparatedByString:@"_"] lastObject]  componentsSeparatedByString:@".png"] firstObject] componentsSeparatedByString:@"@"] firstObject] intValue];
+                
+                if([fileName rangeOfString:@"@2x"].location != NSNotFound){
+                    maxSize = maxSize * 2;
+                }
+                
+                if(glowish.size.width > maxSize || glowish.size.height > maxSize){
+                    NSLog(@"%@ size is wrong - width: %g, height %g",fullPath,glowish.size.width, glowish.size.height);
+                }
+                if(glowish.size.width < maxSize  && glowish.size.height < maxSize){
+                    NSLog(@"%@ size is wrong - width: %g, height %g",fullPath,glowish.size.width, glowish.size.height);
+                }
             }
         }
         
@@ -71,29 +85,6 @@ int main(int argc, const char *argv[])
     
     recursiveGlowish(rootPath, fm);
     
-    //validate sizes
-    NSDictionary* directories = @{@"Android/hdpi" : @(120),
-                                  @"Android/hdpi" : @(60),
-                                  @"Android/mdpi" : @(80),
-                                  @"Android/hdpi" : @(60),
-                                  @"Android/xhdpi" : @(160),
-                                  @"Android/xxhdpi" : @(240),
-                                  @"iOS" : @(80)};
-    
-    for (NSString* directory in [directories allKeys]) {
-        NSArray* imagePaths = [fm contentsOfDirectoryAtPath:[NSString stringWithFormat:@"%@/%@",rootPath, directory] error: nil];
-        int maxSize = [[directories objectForKey:directory] intValue];
-        for (NSString* imagePath in imagePaths) {
-            NSImage* image = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@/%@",rootPath, directory, imagePath]];
-            if(image.size.width > maxSize || image.size.height > maxSize){
-                NSLog(@"directory %@ image %@ size is wrong - width: %g, height %g",directory, imagePath,image.size.width, image.size.height);
-            }
-            if(image.size.width < maxSize  && image.size.height < maxSize){
-                NSLog(@"directory %@ image %@ size is wrong - width: %g, height %g",directory, imagePath,image.size.width, image.size.height);
-            }
-        }
-        
-    }
     return 0;
 
 }
